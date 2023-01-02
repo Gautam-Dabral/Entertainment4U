@@ -9,7 +9,7 @@ import Footer from "./Footer";
 // import MovieDetails from "./MovieDetails";
 
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
 
 const App = () => {
   const [searchTerm, setSearchTerm] = React.useState("batman");
