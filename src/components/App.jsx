@@ -9,7 +9,7 @@ import Footer from "./Footer";
 // import MovieDetails from "./MovieDetails";
 
 
-const API_URL = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
+const API_URL = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
 
 const App = () => {
   const [searchTerm, setSearchTerm] = React.useState("batman");
@@ -78,7 +78,7 @@ const App = () => {
         (
           <div className="container">
             {movies.map(movie => (
-              <MovieCard movie={movie} />
+              <MovieCard movie={movie} key={movie.imdbID} />
             ))}
           </div>
         ) :
