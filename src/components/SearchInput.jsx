@@ -4,7 +4,7 @@ export default function SearchInput(props) {
         <input
           value={props.searchTerm}
           onChange={props.handleChange}
-          placeholder="Search for movies"
+          placeholder="Search for Movies and Tv Series"
         />
     )
 };

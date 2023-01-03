@@ -1,0 +1,206 @@
+/* neon = #14FFEC 
+dark sea = #0D7377
+dark grey = #323232
+black = #212121*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.background {
+    position: fixed;
+    top: 5%;
+    left: 7.5%;
+    z-index: 5;
+
+    background-color: #212426;
+    color: #fff ;
+
+    width: 85%;
+    height: 90vh;
+    border-radius: 20px;
+    box-shadow: -1px 0px 22px 2px rgba(0, 0, 0, 0.75);
+
+}
+
+.close {
+    background-color: #212426;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.close button {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(255, 115, 0);
+    color: rgb(225, 225, 225);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.movie-details {
+    width: 90%;
+    height: 80%;
+    margin: 2% auto;
+}
+
+.flex-details {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.type,
+.year {
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.rating {
+    position: absolute;
+    z-index: 6;
+    top: 1vw;
+    left: -1vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.25vw;
+    height: 2.25vw;
+    background-color: rgb(255, 115, 0);
+    color: #fff;
+    border-radius: 50%;
+}
+
+.poster img {
+    border-radius: 8px;
+    margin: 1.5rem auto;
+}
+
+.info {
+    margin: 3% 5%;
+}
+
+.genre,
+.plot,
+.director,
+.writer,
+.cast,
+.awards {
+    margin-bottom: 3%;
+}
+
+@media (max-width: 992px) {
+
+    * {
+        font-size: 18px;
+    }
+
+    .background {
+        width: 90%;
+        height: 80vh;
+        top: 5%;
+        left: 5%;
+    }
+    .poster {
+        width: 100%;
+    }
+    .rating {
+        z-index: 6;
+        top: 1vw;
+        left: -2vw;
+        width: 5vw;
+        height: 5vw;
+    }
+
+}
+
+@media (max-width: 792px) {
+
+    * {
+        font-size: 14px;
+    }
+
+    .background {
+        width: 85%;
+        height: auto;
+        top: 5%;
+        left: 7.5%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .flex-details {
+        flex-direction: column;
+    }
+
+    .poster img{
+        width: 45%;
+    }
+
+    .rating {
+        z-index: 6;
+        top: 1vw;
+        left: 18vw;
+        width: 5vw;
+        height: 5vw;
+    }
+    .info {
+        margin: 0px;
+    }
+    .cast {
+        display: none;
+    }
+
+}
+
+@media (max-width: 492px) {
+
+    * {
+        font-size: 13px;
+    }
+
+    .background {
+        width: 85%;
+        height: auto;
+        top: 3.5%;
+        left: 7.5%;
+        text-align: center;
+    }
+
+    .close {
+        top: -10px;
+        right: -10px;
+    }
+
+    .poster img {
+        width: 75%;
+    }
+
+    .rating {
+        width: 8vw;
+        height: 8vw;
+        font-size: 3.5vw;
+        z-index: 6;
+        top: 0vw;
+        left: 0vw;
+    }
+
+    .info {
+        margin: 0;
+    }
+
+}

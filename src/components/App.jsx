@@ -6,16 +6,16 @@ import SearchIcon from "./search.svg";
 import SearchInput from "./SearchInput";
 import SearchButton from "./SearchButton";
 import Footer from "./Footer";
-// import MovieDetails from "./MovieDetails";
+import MovieDetails from "./MovieDetails";
 
 
 const API_URL = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = React.useState("batman");
+  const [searchTerm, setSearchTerm] = React.useState("");
   const [pageNo, setPageNo] = React.useState(1);
   const [movies, setMovies] = React.useState([]);
-  // const [movieDetails, setMovieDetails] = React.useState({value: false , details: {}});
+  const [movieDetails, setMovieDetails] = React.useState({ value: false, details: null });
 
   React.useEffect(() => {
     searchMovies(searchTerm, pageNo);
@@ -27,15 +27,24 @@ const App = () => {
     setMovies(data.Search);
   };
 
-  // const getMovieDetails = async (id) => {
-  //   const response = await fetch(`${API_URL}&i=${id}&plot=full`);
-  //   const movieDetailsData = await response.json();
-  //   setMovieDetails(prevValue => ({
-  //     ...prevValue,
-  //     value: true,
-  //     details: movieDetailsData
-  //   }));
-  // }
+  const getMovieDetails = async (id) => {
+    const response = await fetch(`${API_URL}&i=${id}&plot=short`);
+    const detailData = await response.json();
+
+    setMovieDetails(({
+      value: true,
+      details: detailData
+    }));
+
+    console.log(detailData)
+  }
+
+  const closeMovieDetails = () => {
+    setMovieDetails(prevValue => ({
+      value: false,
+      details: {}
+    }));
+  }
 
   const handleChange = (event) => {
     setPageNo(1)
@@ -60,6 +69,7 @@ const App = () => {
         return prevValue
       }
     })
+    window.scroll(0, 0);
   }
 
 
@@ -67,7 +77,7 @@ const App = () => {
 
     <div className="app">
 
-      <Header title="Movies, Series & More" brand="Entertainment4U" />
+      <Header title="Movies, Series & More" />
 
       <div className="search">
         <SearchInput searchTerm={searchTerm} handleChange={handleChange} />
@@ -76,27 +86,28 @@ const App = () => {
 
       {movies?.length > 0 ?
         (
+          <>
           <div className="container">
             {movies.map(movie => (
-              <MovieCard movie={movie} key={movie.imdbID} />
+              <MovieCard movie={movie} key={movie.imdbID} handleClick={getMovieDetails} />
             ))}
           </div>
+          <div className="pagination">
+          <button className="left" name="left" onClick={handlePagination}>{"<"}</button>
+          <div className="page-no"><h4>{pageNo}</h4></div>
+          <button className="right" name="right" onClick={handlePagination}>{">"}</button>
+        </div>
+        {movieDetails.value && <MovieDetails movie={movieDetails.details} handleClose={closeMovieDetails} />}
+        </>
         ) :
         (
           <div className="empty">
-            <h2>No movies found</h2>
+            <h2>Input title to search!</h2>
           </div>
         )}
 
-      <div className="pagination">
-        <button className="left" name="left" onClick={handlePagination}>{"<"}</button>
-        <div className="page-no"><h4>{pageNo}</h4></div>
-        <button className="right" name="right" onClick={handlePagination}>{">"}</button>
-      </div>
-
       <Footer />
 
-      {/* {movieDetails.value && <MovieDetails />} */}
     </div>
   );
 };

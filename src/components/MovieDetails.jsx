@@ -1,4 +1,4 @@
-
+import "./MovieDetails.css"
 // {
 //     "Title": "Lego Batman: The Movie - DC Super Heroes Unite",
 //     "Year": "2013",
@@ -36,19 +36,26 @@
 export default function MovieDetails(props) {
     return (
         <div className="background">
+            <div className="close"><button onClick={props.handleClose}>X</button></div>
             <div className="movie-details">
-                <div className="image">
-                    <p>It's working</p>
+                <h2 className="title">{props.movie.Title}</h2>
+                <h4 className="type">Type - {props.movie.Type}</h4>
+                <h4 className="year">Year - {props.movie.Year}</h4>
+                {/* <h4 className="runtime">Runtime - {props.movie.Runtime}</h4> */}
+                <div className="flex-details">
+                <h4 className="rating">{props.movie.imdbRating}</h4>
+                <div className="poster">
+                    <img src={props.movie.Poster} alt={props.movie.Title} />
                 </div>
                 <div className="info">
-                    {/* Title, type, Year , 
-                 Rated, Released, Runtime */}
-                    {/* poster 300x444 */}
-                    {/* plot */}
-                    {/* Genre */}
-                    {/* Director, writer, cast */}
-                    {/* imdbRating */}
-                    {/* awards */}
+                    <h4 className="released">Released - {props.movie.Released}</h4>
+                    <h4 className="genre">Genre : {props.movie.Genre}</h4>
+                    <p className="plot"><strong>Plot</strong> - {props.movie.Plot}</p>
+                    <h4 className="director">Director - {props.movie.Director}</h4>
+                    <p className="writer">{"Writer(s)"} - {props.movie.Writer}</p>
+                    <h4 className="cast">Cast - {props.movie.Cast}</h4>
+                    <h4 className="awards">Awards - {props.movie.Awards}</h4>
+                </div>
                 </div>
             </div>
         </div>

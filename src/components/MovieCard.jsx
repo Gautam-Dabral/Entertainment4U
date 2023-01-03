@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieCard = (props) => {
   return (
-    <div className="movie" key={props.movie.imdbID} onClick={props.handleClick}>
+    <div className="movie" key={props.movie.imdbID} onClick={() => props.handleClick(props.movie.imdbID)}>
       <div>
         <p>{props.movie.Year}</p>
       </div>
